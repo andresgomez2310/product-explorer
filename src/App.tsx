@@ -1,27 +1,34 @@
-import './App.css'
 
+import { Routes, Route } from 'react-router';
+import HomePage from './pages/HomePage';
+import ExplorePage from './pages/ExplorePage';
+import ProductDetailPage from './pages/ProductDetailPage';
+import FavoritesPage from './pages/FavoritesPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
+import Header from './components/layout/Header';
 
-function App() {
+export default function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 px-6">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-white">
-          Product Explorer
-        </h1>
+    <div className="min-h-screen bg-white text-slate-900">
+      <Header />
 
-        <p className="mt-4 text-slate-400">
-          Explora y descubre tus productos favoritos.
-        </p>
-
-        <button
-          type="button"
-          className="mt-6 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white"
-        >
-          Explorar productos
-        </button>
-      </div>
-    </main>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route
+            path="/products/:id"
+            element={<ProductDetailPage />}
+          />
+          <Route
+            path="/favorites"
+            element={<FavoritesPage />}
+          />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+    </div>
   );
 }
-
-export default App
