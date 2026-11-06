@@ -7,6 +7,7 @@ import FavoritesPage from './pages/FavoritesPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Header from './components/layout/Header';
+import { Toaster } from 'sonner';
 
 export default function App() {
   return (
@@ -28,6 +29,12 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Toaster
+            position="top-right"
+            richColors
+            duration={4000}
+            closeButton
+      />
       </main>
     </div>
   );

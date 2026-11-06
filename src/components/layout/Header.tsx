@@ -1,14 +1,20 @@
 
 import { NavLink } from 'react-router';
+import { useFavorites } from '../../context/FavoritesContext';
 
-const links = [
-  { to: '/', label: 'Inicio', end: true },
-  { to: '/explore', label: 'Explorar' },
-  { to: '/favorites', label: 'Favoritos' },
-  { to: '/contact', label: 'Contacto' },
-];
 
 export default function Header() {
+  const { favorites } = useFavorites();
+  const links = [
+    { to: '/', label: 'Inicio', end: true },
+    { to: '/explore', label: 'Explorar' },
+    {
+      to: '/favorites',
+      label: `Favoritos (${favorites.length})`,
+    },
+    { to: '/contact', label: 'Contacto' },
+  ];
+
   return (
     <header className="border-b border-slate-200">
       <nav
